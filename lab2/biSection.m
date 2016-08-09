@@ -1,4 +1,4 @@
-function [root, val, status] = bisection(f, a, b, epsilon, delta, max_iter)
+function [root, val, status] = biSection(f, a, b, epsilon, delta, max_iter)
 	fa = f(a);
 	fb = f(b);
 	for i = 1:max_iter

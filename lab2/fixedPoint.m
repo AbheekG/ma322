@@ -1,4 +1,4 @@
-function [fixed, status] = fixed_point(g, x, epsilon, max_iter)
+function [fixed, status] = fixedPoint(g, x, epsilon, max_iter)
 	for i = 1:max_iter
 		y = g(x);
 		if(abs(x - y) < epsilon)
@@ -7,7 +7,7 @@ function [fixed, status] = fixed_point(g, x, epsilon, max_iter)
 		x = y;
 	end
 
-	fixed = y;
+	fixed = y
 
 	if(abs(x - y) < epsilon)
 		status = 0;

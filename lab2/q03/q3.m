@@ -1,3 +1,6 @@
+format long;
+cd ..; bisection = @biSection; cd q03;
+
 a = -100;
 b = 0.1;
 epsilon = 1e-5;
