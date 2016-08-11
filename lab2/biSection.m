@@ -1,10 +1,14 @@
-function [root, val, status] = biSection(f, a, b, epsilon, delta, max_iter)
+function [root, val, status, data] = biSection(f, a, b, epsilon, delta, max_iter)
+	data = [];
 	fa = f(a);
 	fb = f(b);
 	for i = 1:max_iter
 		c = (a + b) / 2;
 		fc = f(c);
-		if(abs(fc) < epsilon & abs(a-b) < delta)
+		err = abs(c-a);
+		temp = [i, a, b, c, fc, err];
+		data = [data; temp];
+		if(abs(fc) < epsilon & err < delta)
 			break;
 		elseif (fa*fc < 0)
 			b = c;
@@ -18,7 +22,9 @@ function [root, val, status] = biSection(f, a, b, epsilon, delta, max_iter)
 	root = c;
 	val = fc;
 
-	if(abs(fc) < epsilon & abs(a-b) < delta)
+	data
+
+	if(abs(fc) < epsilon & err < delta)
 		status = 0;
 	elseif(fc < epsilon)
 		status = 1;
