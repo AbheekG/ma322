@@ -13,6 +13,8 @@ function [fixed, status, data] = fixedPoint(g, x, epsilon, max_iter)
 
 	fixed = y;
 
+	data
+
 	if(abs(x - y) < epsilon)
 		status = 0;
 	else
