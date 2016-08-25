@@ -1,4 +1,4 @@
-format long;
+format short e;
 cd ..; fixed_point = @fixedPoint; cd q05;
 
 x = 1;
