@@ -1,9 +1,9 @@
-function [fixed, status, iterations, data] = fixedPoint(g, x, epsilon, max_iter)
+function [fixed, status, iterations, data] = newtonsMethod(f, df, x, epsilon, max_iter)
 	data = [];
 	for i = 1:max_iter
-		y = g(x);
+		y = x - f(x)/df(x);
 		err = abs(x-y);
-		temp = [i, x, y, err, abs(g(y) - y)/err];
+		temp = [i, x, y, err];
 		data = [data; temp];
 		if(abs(x - y) < epsilon)
 			break;

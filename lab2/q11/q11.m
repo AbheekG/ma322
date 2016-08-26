@@ -1,9 +1,9 @@
 format short e;
-cd ..; secant = @secantMethod; cd q12;
+cd ..; secant = @secantMethod; cd q11;
 
-x0 = 0.1;
-x1 = 0.3;
-tol = 1e-14;
+x0 = 0;
+x1 = 1;
+tol = 1e-4;
 max_iter = 1000;
 
 [fixed, status] = secant(@f, x0, x1, tol, max_iter)

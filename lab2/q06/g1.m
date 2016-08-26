@@ -1,3 +1,3 @@
 function [y] = g1(x)
-	y = 3*x.^2 - exp(x);
+	y = (exp(x) ./ x)^(1/2);
 end

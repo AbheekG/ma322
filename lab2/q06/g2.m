@@ -1,3 +1,3 @@
-function [y] = g1(x)
-	y = x - cos(x);
+function [y] = g2(x)
+	y = cos(x);
 end

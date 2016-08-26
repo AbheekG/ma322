@@ -1,4 +1,4 @@
-function [root, val, status, data] = biSection(f, a, b, epsilon, tol, max_iter)
+function [root, val, status, iterations, data] = biSection(f, a, b, epsilon, tol, max_iter)
 	data = [];
 	fa = f(a);
 	fb = f(b);
@@ -21,6 +21,7 @@ function [root, val, status, data] = biSection(f, a, b, epsilon, tol, max_iter)
 
 	root = c;
 	val = fc;
+	iterations = i;
 
 	if(abs(fc) < epsilon & err < tol)
 		status = 0;

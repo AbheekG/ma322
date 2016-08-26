@@ -1,4 +1,4 @@
-function [fixed, status, data] = secantMethod(f, x0, x1, epsilon, max_iter)
+function [fixed, status, iterations, data] = secantMethod(f, x0, x1, epsilon, max_iter)
 	data = [];
 	fx1 = f(x1);
 	fx0 = f(x0);
@@ -17,6 +17,7 @@ function [fixed, status, data] = secantMethod(f, x0, x1, epsilon, max_iter)
 	end
 
 	fixed = y;
+	iterations = i;
 
 	if(abs(x1 - y) < epsilon)
 		status = 0;
