@@ -3,7 +3,7 @@ function [fixed, status, iterations, data] = newtonsMethod(f, df, x, epsilon, ma
 	for i = 1:max_iter
 		y = x - f(x)/df(x);
 		err = abs(x-y);
-		temp = [i, x, y, err];
+		temp = [i, x, y];
 		data = [data; temp];
 		if(abs(x - y) < epsilon)
 			break;

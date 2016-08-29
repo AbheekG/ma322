@@ -3,7 +3,7 @@ function [fixed, status, iterations, data] = fixedPoint(g, x, epsilon, max_iter)
 	for i = 1:max_iter
 		y = g(x);
 		err = abs(x-y);
-		temp = [i, x, y, err, abs(g(y) - y)/err];
+		temp = [i, x, y];
 		data = [data; temp];
 		if(abs(x - y) < epsilon)
 			break;

@@ -5,7 +5,7 @@ function [fixed, status, iterations, data] = secantMethod(f, x0, x1, epsilon, ma
 	for i = 1:max_iter
 		y = x1 - fx1 * (x1 - x0) / (fx1 - fx0);
 		err = abs(x0-x1);
-		temp = [i, x0, x1, err, abs(y - x1)/err];
+		temp = [i, x0, x1];
 		data = [data; temp];
 		if(abs(x1 - y) < epsilon)
 			break;

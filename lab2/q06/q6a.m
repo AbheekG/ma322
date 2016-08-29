@@ -1,11 +1,14 @@
-format short e;
+format short;
 cd ..; fixed_point = @fixedPoint; cd q06;
 
-x = 1;
 epsilon = 1e-5;
 max_iter = 1000;
 
-a = -1:0.01:4;
-plot(a, a,'r', a, g1(a),'b');
+x = -0.5;
+[fixed, status, iterations, data] = fixed_point(@g11, x, epsilon, max_iter)
 
-[fixed, status, iterations] = fixed_point(@g1, x, epsilon, max_iter)
+x = 0.5;
+[fixed, status, iterations, data] = fixed_point(@g12, x, epsilon, max_iter)
+
+x = 3.5;
+[fixed, status, iterations, data] = fixed_point(@g13, x, epsilon, max_iter)

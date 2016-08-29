@@ -6,7 +6,7 @@ function [root, val, status, iterations, data] = biSection(f, a, b, epsilon, tol
 		c = (a + b) / 2;
 		fc = f(c);
 		err = abs(c-a);
-		temp = [i, a, b, c, fc, err];
+		temp = [i, a, b, c, fc];
 		data = [data; temp];
 		if(abs(fc) < epsilon & err < tol)
 			break;
