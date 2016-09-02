@@ -1,4 +1,4 @@
-function [J] = Ja(x)
+function [J] = J(x)
 	J = [0, 0; 0, 0];
 	J(1,1) = 6;
 	J(1,2) = 2 * x(3) * sin(x(2) * x(3));

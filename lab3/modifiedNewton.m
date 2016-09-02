@@ -2,7 +2,7 @@ function [fixed_point, status, iterations, data] = modifiedNewton(f, df, p, x, t
 	data = [];
 	for i = 1:max_iter
 		y = x - p*f(x)/df(x);
-		err = abs(x-y)
+		err = abs(x-y);
 		temp = [i, x, y];
 		data = [data; temp];
 		if(err < tol)
