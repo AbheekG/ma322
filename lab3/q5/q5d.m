@@ -1,5 +1,4 @@
-cd ..; newton = @newtonsMethod; cd q5;
-cd ..; mn = @modifiedNewtonsMethod; cd q5;
+cd ..; newton = @newtonsMethod; mn = @modifiedNewton; ooz = @orderOfZero; cd q5;
 
 tol = 1e-6;
 max_iter = 1000;
@@ -7,4 +6,7 @@ max_iter = 1000;
 x = -0.5;
 [fixed_point, status, iterations, data] = newton(@fd, @dfd, x, tol, max_iter)
 
-[fixed_point, status, iterations, data] = mn(@fd, @dfd, @ddfd, x, tol, max_iter)
+p = ooz(@fd, fixed_point, tol)
+
+x = -0.2;
+[fixed_point, status, iterations, data] = mn(@fd, @dfd, p, x, tol, max_iter)

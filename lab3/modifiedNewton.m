@@ -1,11 +1,8 @@
-function [fixed_point, status, iterations, data] = modifiedNewtonsMethod(f, df, ddf, x, tol, max_iter)
+function [fixed_point, status, iterations, data] = modifiedNewton(f, df, p, x, tol, max_iter)
 	data = [];
 	for i = 1:max_iter
-		fx = f(x);
-		dfx = df(x);
-		ddfx = ddf(x);
-		y = x - (fx * dfx) / (dfx^2 - fx * ddfx);
-		err = abs(x-y);
+		y = x - p*f(x)/df(x);
+		err = abs(x-y)
 		temp = [i, x, y];
 		data = [data; temp];
 		if(err < tol)
