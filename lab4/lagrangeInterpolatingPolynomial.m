@@ -22,8 +22,8 @@ function [result] = lagrangeInterpolatingPolynomial(x, y, value)
 	% for i = 2:n
 	% 	fd(i, 1: n-i+1) = (fd(i-1, 2: n-i+2) - fd(i-1, 1: n-i+1)) ./ (x(i: n) - x(1: n-i+1));
 	% end
-	result = pd .* y;
-	result = result ./ (value - x);
-	result = result ./ phi';
+	result = bsxfun(@times, pd, y);
+	result = result ./ bsxfun(@minus, value, x);
+	result = bsxfun(@rdivide, result, phi');
 	result = sum(result, 2);
 end
