@@ -8,8 +8,5 @@ value = value';
 lagrange_value = lip(x, y, value);
 exact_value = log(value);
 err = max(abs(lagrange_value - exact_value))
-lagrange_value = nfd(x, y, value);
 
-err = max(abs(lagrange_value - exact_value))
 %[lagrange_value, exact_value, abs(newtonForwardDifference_value - exact_value)]
-plot(value, lagrange_value, col='r', value, exact_value, col='b');

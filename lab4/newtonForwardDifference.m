@@ -1,4 +1,4 @@
-function [result] = newtonForwardDifference(x, y, value)
+function [result, coeff] = newtonForwardDifference(x, y, value)
 	n = length(x);
 	m = length(value);
 	fd = zeros(n, n);
@@ -16,4 +16,7 @@ function [result] = newtonForwardDifference(x, y, value)
 	end
 
 	result = df * fd(:,1);
+	coeff = fd(:,1)';
+	for i = 1:n
+		coeff(i) = coeff(i) ./ prod(1:i);
 end
