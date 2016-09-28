@@ -1,5 +1,5 @@
-function [result] = dli(X, value, a)
-	A = [X(1 : a-1), X(a+1 : end)];
-	li = prod(value - A) ./ prod(X(a) - A);
-	result = li .* (sum(1 ./ (value - A)));
+function [result] = dli(X, a, value)
+	syms x;
+	df(x) = diff(li(X, a, x));
+	result = double(df(value));
 end
