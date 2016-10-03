@@ -1,10 +1,10 @@
-clear; cd ..; addpath(pwd); cd q3;
+clear; cd ..; addpath(pwd); cd q4;
 
 syms x;
 
-f(x) = 2.*x / (x.^2 - 4)
-a = 1;
-b = 1.6;
+f(x) = 4 / (1 + x.^2)
+a = 0.5;
+b = 1;
 
 IF = int(f);
 actual_value = double(IF(b) - IF(a));
@@ -27,7 +27,7 @@ fprintf('\nActual value of integral = %e', actual_value);
 fprintf('\nError Bound = %e', error_bound);
 fprintf('\nError = %e\n\n', abs(actual_value - value));
 
-fprintf('\n\nUsing Simpson Rule')
+fprintf('\n\nUsing Simpson one-third Rule')
 value = simpsonRule(f, a, b);
 error_bound = simpsonError(f, a, b);
 
@@ -37,9 +37,17 @@ fprintf('\nError Bound = %e', error_bound);
 fprintf('\nError = %e\n\n', abs(actual_value - value));
 
 fprintf('\n\nUsing Corrected-Trapezoid Rule')
-df(x) = diff(f);
 value = correctedTrapezoid(f, a, b);
 error_bound = correctedTrapezoidError(f, a, b);
+
+fprintf('\nCalculated value of integral = %e', value);
+fprintf('\nActual value of integral = %e', actual_value);
+fprintf('\nError Bound = %e', error_bound);
+fprintf('\nError = %e\n\n', abs(actual_value - value));
+
+fprintf('\n\nUsing Simpson three-eight Rule')
+value = simpson3Rule(f, a, b);
+error_bound = simpson3Error(f, a, b);
 
 fprintf('\nCalculated value of integral = %e', value);
 fprintf('\nActual value of integral = %e', actual_value);

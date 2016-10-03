@@ -1,4 +1,4 @@
-cd ..; rec = @rectangleRule; recError = @rectangleError; cd q3;
+clear; cd ..; addpath(pwd); cd q3;
 
 syms x;
 
@@ -6,12 +6,40 @@ f(x) = x.^4
 a = 0.5;
 b = 1;
 
-value = rec(f, a, b);
+IF = int(f);
+actual_value = double(IF(b) - IF(a));
 
-F = int(f);
-actual_value = double(F(b) - F(a));
+fprintf('\n\nUsing Mid-point Rule')
+value = midpointRule(f, a, b);
+error_bound = midpointError(f, a, b);
 
-error_bound = recError(f, a, b);
+fprintf('\nCalculated value of integral = %e', value);
+fprintf('\nActual value of integral = %e', actual_value);
+fprintf('\nError Bound = %e', error_bound);
+fprintf('\nError = %e\n\n', abs(actual_value - value));
+
+fprintf('\n\nUsing Trapezoid Rule')
+value = trapezoidRule(f, a, b);
+error_bound = trapezoidError(f, a, b);
+
+fprintf('\nCalculated value of integral = %e', value);
+fprintf('\nActual value of integral = %e', actual_value);
+fprintf('\nError Bound = %e', error_bound);
+fprintf('\nError = %e\n\n', abs(actual_value - value));
+
+fprintf('\n\nUsing Simpson Rule')
+value = simpsonRule(f, a, b);
+error_bound = simpsonError(f, a, b);
+
+fprintf('\nCalculated value of integral = %e', value);
+fprintf('\nActual value of integral = %e', actual_value);
+fprintf('\nError Bound = %e', error_bound);
+fprintf('\nError = %e\n\n', abs(actual_value - value));
+
+fprintf('\n\nUsing Corrected-Trapezoid Rule')
+df(x) = diff(f);
+value = correctedTrapezoid(f, a, b);
+error_bound = correctedTrapezoidError(f, a, b);
 
 fprintf('\nCalculated value of integral = %e', value);
 fprintf('\nActual value of integral = %e', actual_value);

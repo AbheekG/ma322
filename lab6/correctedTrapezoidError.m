@@ -1,6 +1,6 @@
-function [result] = rectangleError(f, a, b)
+function [result] = correctedTrapezoidError(f, a, b)
 	syms x;
-	df = diff(f);
+	df = diff(f, 4);
 	ddf = diff(df);
 	if diff(ddf) ~= 0
 		val = double(solve(ddf, x));
@@ -18,5 +18,5 @@ function [result] = rectangleError(f, a, b)
 	else
 		result = double(df(b));
 	end
-	result = (result * (b - a).^2 )/ 2;
+	result = (result * (b - a).^5 )/ 720;
 end
