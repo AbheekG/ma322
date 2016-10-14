@@ -13,7 +13,7 @@ actual_value = double(IF(b) - IF(a));
 h = (b - a) / n;
 points = a : h : b;
 
-fprintf('\n\nUsing Composite Mid-point Rule')
+fprintf('Using Composite Mid-point Rule')
 
 value = 0;
 for i = 1:n
@@ -27,7 +27,7 @@ fprintf('\nActual value of integral = %e', actual_value);
 fprintf('\nError Bound = %e', error_bound);
 fprintf('\nError = %e\n\n', abs(actual_value - value));
 
-fprintf('\n\nUsing Composite Simpson Rule')
+fprintf('Using Composite Simpson Rule')
 
 value = 0;
 for i = 1:n

@@ -1,18 +1,17 @@
-clear; cd ..; addpath(pwd); cd q7;
+clear; cd ..; addpath(pwd); cd q10;
 
 syms x;
 
-f(x) = (1 - x^2)^(1/2) - x
+p = 3;
+q = 2;
+f(x) = ( p^2 * sin(x)^2 + q^2 * cos(x)^2)^(1/2)
 a = 0;
-b = 1 / 2^(1/2);
+b = 2*pi;
 n = 0;
-
-IF = int(f);
-actual_value = double(IF(b) - IF(a));
 
 fprintf('Using Composite Simpson Rule')
 
-lim = 10^(-5) / 2;
+lim = 10^(-6);
 err = 1;
 data = [];
 while err > lim
@@ -25,18 +24,18 @@ while err > lim
 		value = value + simpsonRule(f, points(i), points(i+1));
 	end
 	err = simpsonError(f, a, b) / n^4;
-	fprintf('\nn = %d, error bound = %e', n, err);
+	if rem(n, 5) == 0
+		fprintf('\nn = %d, error bound = %e', n, err);
+	end
 	data = [data; [n, err]];
 end
 
-plot(data(:, 1), data(:, 2));
+plot(data(:, 1), data(:, 2))
 figure;
-plot(data(:, 1), log(data(:, 2)));
+plot(data(:, 1), log(data(:, 2)))
 
 error_bound = simpsonError(f, a, b) / n^4;
 
 fprintf('\nNumber of sub-intervals = %d', n);
 fprintf('\nCalculated value of integral = %e', value);
-fprintf('\nActual value of integral = %e', actual_value);
 fprintf('\nError Bound = %e', error_bound);
-fprintf('\nError = %e\n\n', abs(actual_value - value));

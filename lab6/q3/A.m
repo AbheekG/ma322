@@ -9,7 +9,7 @@ b = 1;
 IF = int(f);
 actual_value = double(IF(b) - IF(a));
 
-fprintf('\n\nUsing Mid-point Rule')
+fprintf('Using Mid-point Rule')
 value = midpointRule(f, a, b);
 error_bound = midpointError(f, a, b);
 
@@ -18,7 +18,7 @@ fprintf('\nActual value of integral = %e', actual_value);
 fprintf('\nError Bound = %e', error_bound);
 fprintf('\nError = %e\n\n', abs(actual_value - value));
 
-fprintf('\n\nUsing Trapezoid Rule')
+fprintf('Using Trapezoid Rule')
 value = trapezoidRule(f, a, b);
 error_bound = trapezoidError(f, a, b);
 
@@ -27,7 +27,7 @@ fprintf('\nActual value of integral = %e', actual_value);
 fprintf('\nError Bound = %e', error_bound);
 fprintf('\nError = %e\n\n', abs(actual_value - value));
 
-fprintf('\n\nUsing Simpson Rule')
+fprintf('Using Simpson Rule')
 value = simpsonRule(f, a, b);
 error_bound = simpsonError(f, a, b);
 
@@ -36,7 +36,7 @@ fprintf('\nActual value of integral = %e', actual_value);
 fprintf('\nError Bound = %e', error_bound);
 fprintf('\nError = %e\n\n', abs(actual_value - value));
 
-fprintf('\n\nUsing Corrected-Trapezoid Rule')
+fprintf('Using Corrected-Trapezoid Rule')
 df(x) = diff(f);
 value = correctedTrapezoid(f, a, b);
 error_bound = correctedTrapezoidError(f, a, b);

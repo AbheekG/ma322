@@ -10,7 +10,7 @@ n = 6;
 IF = int(f);
 actual_value = double(IF(b) - IF(a));
 
-fprintf('\n\nUsing Composite Trapezoid Rule')
+fprintf('Using Composite Trapezoid Rule')
 
 h = (b - a) / n;
 points = a : h : b;

@@ -10,10 +10,11 @@ n = 0;
 IF = int(f);
 actual_value = double(IF(b) - IF(a));
 
-fprintf('\n\nUsing Composite Simpson Rule')
+fprintf('Using Composite Simpson Rule')
 
 lim = 10^(-5) / 2;
 err = 1;
+data = [];
 while err > lim
 	n = n + 1;
 	h = (b - a) / n;
@@ -23,9 +24,14 @@ while err > lim
 	for i = 1:n
 		value = value + simpsonRule(f, points(i), points(i+1));
 	end
-	err = abs(actual_value - value);
-	fprintf('\nn = %d, error = %e', n, err);
+	err = simpsonError(f, a, b) / n^4;
+	fprintf('\nn = %d, error bound = %e', n, err);
+	data = [data; [n, err]];
 end
+
+plot(data(:, 1), data(:, 2));
+figure;
+plot(data(:, 1), log(data(:, 2)));
 
 error_bound = simpsonError(f, a, b) / n^4;
 

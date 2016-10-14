@@ -1,4 +1,5 @@
 clear; cd ..; addpath(pwd); cd q1;
+warning('off', 'symbolic:solve:warnmsg3')
 
 syms x;
 
