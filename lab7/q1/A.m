@@ -3,7 +3,7 @@ image_file = 'A_%d.jpg';
 image_num = 1;
 
 syms x t;
-tol = 1.0e-10;
+tol = 1.0e-8;
 max_iter = 100;
 n_max = 500;
 trai = 2;
@@ -32,7 +32,7 @@ end
 triang_x = [N(trai), 2*N(trai)];
 triang_y = [E(end-trai-1)/10, 2*E(end-trai-1)/10];
 figure; loglog(N, E, 'b', triang_x([1,1,2,1]), triang_y([1,2,1,1]), 'k');
-title('Explicit-Euler method'); xlabel('log(n)'); ylabel('log(error(n)/error(n+1))');
+title('Explicit-Euler method'); xlabel('log(n)'); ylabel('log(error(n))');
 saveas(gcf, sprintf(image_file, image_num)); image_num = image_num + 1;
 
 O = [log2(E(1:end-1)./E(2:end)), 0];
@@ -66,7 +66,7 @@ end
 triang_x = [N(trai), 2*N(trai)];
 triang_y = [E(end-trai-1)/10, 2*E(end-trai-1)/10];
 figure; loglog(N, E, 'b', triang_x([1,1,2,1]), triang_y([1,2,1,1]), 'k');
-title('Implicit-Euler method'); xlabel('log(n)'); ylabel('log(error(n)/error(n+1))');
+title('Implicit-Euler method'); xlabel('log(n)'); ylabel('log(error(n))');
 saveas(gcf, sprintf(image_file, image_num)); image_num = image_num + 1;
 
 O = [log2(E(1:end-1)./E(2:end)), 0];
@@ -98,9 +98,9 @@ while(n < n_max)
 end
 
 triang_x = [N(trai), 2*N(trai)];
-triang_y = [E(end-trai-1)/10, 2*E(end-trai-1)/10];
+triang_y = [E(end-trai-1)/10, 2^2*E(end-trai-1)/10];
 figure; loglog(N, E, 'b', triang_x([1,1,2,1]), triang_y([1,2,1,1]), 'k');
-title('Modified-Euler (trapezoid) method'); xlabel('log(n)'); ylabel('log(error(n)/error(n+1))');
+title('Modified-Euler (trapezoid) method'); xlabel('log(n)'); ylabel('log(error(n))');
 saveas(gcf, sprintf(image_file, image_num)); image_num = image_num + 1;
 
 O = [log2(E(1:end-1)./E(2:end)), 0];
@@ -132,9 +132,9 @@ while(n < n_max)
 end
 
 triang_x = [N(trai), 2*N(trai)];
-triang_y = [E(end-trai-1)/10, 2*E(end-trai-1)/10];
+triang_y = [E(end-trai-1)/10, 2^2*E(end-trai-1)/10];
 figure; loglog(N, E, 'b', triang_x([1,1,2,1]), triang_y([1,2,1,1]), 'k');
-title('Midpoint method'); xlabel('log(n)'); ylabel('log(error(n)/error(n+1))');
+title('Midpoint method'); xlabel('log(n)'); ylabel('log(error(n))');
 saveas(gcf, sprintf(image_file, image_num)); image_num = image_num + 1;
 
 O = [log2(E(1:end-1)./E(2:end)), 0];
@@ -166,9 +166,9 @@ while(n < n_max)
 end
 
 triang_x = [N(trai), 2*N(trai)];
-triang_y = [E(end-trai-1)/10, 2*E(end-trai-1)/10];
+triang_y = [E(end-trai-1)/10, 2^2*E(end-trai-1)/10];
 figure; loglog(N, E, 'b', triang_x([1,1,2,1]), triang_y([1,2,1,1]), 'k');
-title('Runge Kutta 2th Order (Optimal) method'); xlabel('log(n)'); ylabel('log(error(n)/error(n+1))');
+title('Runge Kutta 2th Order (Optimal) method'); xlabel('log(n)'); ylabel('log(error(n))');
 saveas(gcf, sprintf(image_file, image_num)); image_num = image_num + 1;
 
 O = [log2(E(1:end-1)./E(2:end)), 0];
@@ -200,9 +200,9 @@ while(n < n_max)
 end
 
 triang_x = [N(trai), 2*N(trai)];
-triang_y = [E(end-trai-1)/10, 2*E(end-trai-1)/10];
+triang_y = [E(end-trai-1)/10, 2^4*E(end-trai-1)/10];
 figure; loglog(N, E, 'b', triang_x([1,1,2,1]), triang_y([1,2,1,1]), 'k');
-title('Runge Kutta 4th Order method'); xlabel('log(n)'); ylabel('log(error(n)/error(n+1))');
+title('Runge Kutta 4th Order method'); xlabel('log(n)'); ylabel('log(error(n))');
 saveas(gcf, sprintf(image_file, image_num)); image_num = image_num + 1;
 
 O = [log2(E(1:end-1)./E(2:end)), 0];

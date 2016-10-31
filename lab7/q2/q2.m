@@ -3,7 +3,7 @@ image_file = 'q2_%d.jpg';
 image_num = 1;
 
 syms x t;
-tol = 1.0e-10;
+tol = 1.0e-8;
 max_iter = 100;
 n_max = 500;
 trai = 2;

@@ -34,9 +34,9 @@ while(n < n_max)
 end
 
 triang_x = [N(trai), 2*N(trai)];
-triang_y = [E(end-trai-1)/10, 2*E(end-trai-1)/10];
+triang_y = [E(end-trai-1)/10, 2^4*E(end-trai-1)/10];
 figure; loglog(N, E, 'b', triang_x([1,1,2,1]), triang_y([1,2,1,1]), 'k');
-title('Adams-Bashford method'); xlabel('log(n)'); ylabel('log(error(n)/error(n+1))');
+title('Adams-Bashford method'); xlabel('log(n)'); ylabel('log(error(n))');
 saveas(gcf, sprintf(image_file, image_num)); image_num = image_num + 1;
 
 O = [log2(E(1:end-1)./E(2:end)), 0];
@@ -74,9 +74,9 @@ while(n < n_max)
 end
 
 triang_x = [N(trai), 2*N(trai)];
-triang_y = [E(end-trai-1)/10, 2*E(end-trai-1)/10];
+triang_y = [E(end-trai-1)/10, 2^4*E(end-trai-1)/10];
 figure; loglog(N, E, 'b', triang_x([1,1,2,1]), triang_y([1,2,1,1]), 'k');
-title('Adams-Moulton method'); xlabel('log(n)'); ylabel('log(error(n)/error(n+1))');
+title('Adams-Moulton method'); xlabel('log(n)'); ylabel('log(error(n))');
 saveas(gcf, sprintf(image_file, image_num)); image_num = image_num + 1;
 
 O = [log2(E(1:end-1)./E(2:end)), 0];
@@ -116,9 +116,9 @@ while(n < n_max)
 end
 
 triang_x = [N(trai), 2*N(trai)];
-triang_y = [E(end-trai-1)/10, 2*E(end-trai-1)/10];
+triang_y = [E(end-trai-1)/10, 2^4*E(end-trai-1)/10];
 figure; loglog(N, E, 'b', triang_x([1,1,2,1]), triang_y([1,2,1,1]), 'k');
-title('Adams-Bashford method'); xlabel('log(n)'); ylabel('log(error(n)/error(n+1))');
+title('Adams-Bashford method'); xlabel('log(n)'); ylabel('log(error(n))');
 saveas(gcf, sprintf(image_file, image_num)); image_num = image_num + 1;
 
 O = [log2(E(1:end-1)./E(2:end)), 0];
@@ -156,9 +156,9 @@ while(n < n_max)
 end
 
 triang_x = [N(trai), 2*N(trai)];
-triang_y = [E(end-trai-1)/10, 2*E(end-trai-1)/10];
+triang_y = [E(end-trai-1)/10, 2^4*E(end-trai-1)/10];
 figure; loglog(N, E, 'b', triang_x([1,1,2,1]), triang_y([1,2,1,1]), 'k');
-title('Adams-Moulton method'); xlabel('log(n)'); ylabel('log(error(n)/error(n+1))');
+title('Adams-Moulton method'); xlabel('log(n)'); ylabel('log(error(n))');
 saveas(gcf, sprintf(image_file, image_num)); image_num = image_num + 1;
 
 O = [log2(E(1:end-1)./E(2:end)), 0];
