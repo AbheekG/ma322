@@ -20,5 +20,5 @@ function [X, Y] = central(a, b, c, x0, xn, p1, q1, r1, p2, q2, r2, n)
 	A(n+1, n+1) = p2/h + q2;
 	B(n+1) = -r2;
 
-	Y = A\B;
+	Y = pinv(A)*B;
 end

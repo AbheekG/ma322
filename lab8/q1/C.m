@@ -1,26 +1,26 @@
 clear; cd ..; addpath(pwd); cd q1; close all;
-image_file = 'B_%d.jpg';
+image_file = 'C_%d.jpg';
 image_num = 1;
 trai = 2;
 
 syms x;
 
-y(x) = x^3*exp(x)/6 - 5*x*exp(x)/3 + 2*exp(x) - x - 2;
+y(x) = -(sin(x) + 3*cos(x))/10;
 
-a(x) = -2 + 0*x;
-b(x) = 1 + 0*x;
-c(x) = x - x*exp(x);
+a(x) = -1 + 0*x;
+b(x) = -2 + 0*x;
+c(x) = -cos(x);
 
 x0 = 0;
-xn = 2;
+xn = pi/2;
 
-p1 = 0;
-q1 = 1;
-r1 = 0;
+p1 = 1;
+q1 = 0;
+r1 = 1/10;
 
-p2 = 0;
-q2 = 1;
-r2 = 4;
+p2 = 1;
+q2 = 0;
+r2 = -3/10;
 
 fprintf('\n\nUsing Forward-difference for 1st order and Central-difference for 2nd order\n')
 N = [];
@@ -102,7 +102,7 @@ for i = 1:length(N)-1
 end
 
 triang_x = [N(trai), 2*N(trai)];
-triang_y = [E(end-trai)/10, 2^2*E(end-trai)/10];
+triang_y = [E(end-trai)/10, 2*E(end-trai)/10];
 figure; loglog(N, E, 'b', triang_x([1,1,2,1]), triang_y([1,2,1,1]), 'k');
 title('Using Central-difference for 1st order and Central-difference for 2nd order'); xlabel('log(n)'); ylabel('log(error(n))');
 saveas(gcf, sprintf(image_file, image_num)); image_num = image_num + 1;
