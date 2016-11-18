@@ -1,6 +1,6 @@
-function [W, X, T] = btcs(c, t0, tn, x0, xn, ut0, ux0, uxn, n, m)
+function [W, X, T] = btcs(c, t0, tn, x0, xn, ut0, ux0, uxn, n)
 	k = (tn - t0)/n;
-	h = (xn - x0)/m;
+	h = (xn - x0)/n;
 	lamda = c*k/h^2;
 
 	X = x0:h:xn;

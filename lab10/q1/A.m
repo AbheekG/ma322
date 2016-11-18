@@ -27,7 +27,7 @@ E = [];
 for i = 3:6
 	n = 2^i;
 	tic
-	[W, X, T] = btcs(c, t0, tn, x0, xn, ut0, ux0, uxn, n, n);
+	[W, X, T] = ftcs(c, t0, tn, x0, xn, ut0, ux0, uxn, n);
 	U = zeros(length(T), length(X));
 	for i = 1:length(T)
 		for j = 1:length(X)
@@ -40,7 +40,7 @@ for i = 3:6
 	toc
 end
 
-O = [log2(E(1:end-1)./E(2:end)), 0];
+O = [log2(E(1:end-1)./E(2:end)), 1];
 fprintf('\nN\tError\t\tOrder')
 
 for i = 1:length(N)
@@ -77,8 +77,8 @@ title('Contour plot of numerically approximated function'); xlabel('x'); ylabel(
 legend('z = numerically approximated funtion');
 saveas(gcf, sprintf(image_file, image_num)); image_num = image_num + 1;
 
-% figure;
-% plot()
-% title('Surface plot of absolute error'); xlabel('x'); ylabel('t'); zlabel('Error')
-% legend('z = Error');
-% saveas(gcf, sprintf(image_file, image_num)); image_num = image_num + 1;
+figure;
+plot(X, U(end, :), 'b', X, W(end, :), 'r');
+title('Exact and numerical Solution at final time level'); xlabel('x'); ylabel('Solution');
+legend('Exact', 'Numerical');
+saveas(gcf, sprintf(image_file, image_num)); image_num = image_num + 1;
