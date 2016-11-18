@@ -10,9 +10,9 @@ c = 4/pi^2;
 
 % End points
 x0 = 0;
-xn = 1;
+xn = 4;
 t0 = 0;
-tn = 4;
+tn = 1;
 
 % Boundary Conditions
 ut0(x) = sin(x*pi/4)*(1 + 2*cos(x*pi/4));
@@ -20,22 +20,21 @@ ux0(t) = sym(0);
 uxn(t) = sym(0);
 
 % Solution
-u(x, t) = exp(-t)*sin(x*pi/2) + exp(-t/4)*sin(x*pi/4);
+u(t, x) = exp(-t)*sin(x*pi/2) + exp(-t/4)*sin(x*pi/4);
 
 N = [];
 E = [];
-for i = 1:3
+for i = 3:6
 	n = 2^i;
 	tic
 	[W, X, T] = btcs(c, t0, tn, x0, xn, ut0, ux0, uxn, n, n);
 	U = zeros(length(T), length(X));
 	for i = 1:length(T)
 		for j = 1:length(X)
-			U(i, j) = u(X(j), T(i));
+			U(i, j) = u(T(i), X(j));
 		end
 	end
 	Err = abs(U - W);
-	W, U
 	N = [N, n];
 	E = [E, max(max(Err))];
 	toc
@@ -78,8 +77,8 @@ title('Contour plot of numerically approximated function'); xlabel('x'); ylabel(
 legend('z = numerically approximated funtion');
 saveas(gcf, sprintf(image_file, image_num)); image_num = image_num + 1;
 
-figure;
-plot()
-title('Surface plot of absolute error'); xlabel('x'); ylabel('t'); zlabel('Error')
-legend('z = Error');
-saveas(gcf, sprintf(image_file, image_num)); image_num = image_num + 1;
+% figure;
+% plot()
+% title('Surface plot of absolute error'); xlabel('x'); ylabel('t'); zlabel('Error')
+% legend('z = Error');
+% saveas(gcf, sprintf(image_file, image_num)); image_num = image_num + 1;

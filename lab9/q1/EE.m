@@ -43,7 +43,7 @@ u(x, y) = 2*x - y;
 N = [];
 E = [];
 for i = 1:4
-	n = 2^i;
+	n = 3*2^(i-1);
 	[W, X, Y] = five_point(a, b, c, d, e, f, g, x0, xn, y0, yn, px0, qx0, rx0, pxn, qxn, rxn, py0, qy0, ry0, pyn, qyn, ryn, n);
 	U = zeros(n+1, n+1);
 	for ii = 1:n+1
@@ -66,7 +66,7 @@ for i = 1:length(N)-1
 end
 
 triang_x = [N(trai), 2*N(trai)];
-triang_y = [E(end-trai)/10, 2*E(end-trai)/10];
+triang_y = [E(end-trai)/10, 2^2*E(end-trai)/10];
 figure; loglog(N, E, 'b', triang_x([1,1,2,1]), triang_y([1,2,1,1]), 'k');
 title('Error convergence loglog plot'); xlabel('log(n)'); ylabel('log(error(n))');
 saveas(gcf, sprintf(image_file, image_num)); image_num = image_num + 1;
